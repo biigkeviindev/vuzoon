@@ -1,9 +1,11 @@
 import { api_customer_post } from "@/config/api-links";
 import axios from "axios";
+import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 const Signup = () => {
   const [condition, setConditions] = useState(false);
@@ -20,10 +22,16 @@ const Signup = () => {
     try {
       const createCustomer = await axios.post(api_customer_post, values);
       if (createCustomer.status === 200) {
-        router.push("/dashboard/properties");
+        await signIn("credentials", {
+          username: values.email,
+          password: values.password,
+          callbackUrl: "/dashboard/properties",
+        });
       }
-    } catch (e) {
-      console.error(e);
+    } catch (error: any) {
+      if (error.status === 409) {
+        toast.error("El Email ya se encuentra registrado");
+      }
     }
   };
 
@@ -60,6 +68,10 @@ const Signup = () => {
                 <input {...register("lastname")} type="text" placeholder="" />
               </div>
               <div className="flex flex-col mb-4">
+                <label className="text-[#55565d]">Contraseña</label>
+                <input {...register("password")} type="text" placeholder="" />
+              </div>
+              <div className="flex flex-col mb-4">
                 <label className="text-[#55565d]">
                   Código de referido (Opcional)
                 </label>
@@ -79,7 +91,7 @@ const Signup = () => {
                 <button
                   type="submit"
                   disabled={!condition}
-                  className="w-1/2 bg-[#30d59b] font-bold py-2 rounded-md text-white"
+                  className="w-1/2 bg-[#30d59b] font-bold py-2 rounded-md text-white cursor-pointer"
                 >
                   Registrarme
                 </button>
