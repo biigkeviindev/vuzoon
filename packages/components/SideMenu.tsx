@@ -3,9 +3,9 @@ import React from "react";
 
 const SideMenu = () => {
   return (
-    <aside className="px-8">
+    <aside className="px-8 bg-[#1a2543] text-white h-[100vh]">
       <img className="h-[200px]" src="/logo.svg" alt="Logo Vuzoon" />
-      <div className="flex">
+      <div className="flex bg-[#ffffff20] rounded-2xl py-2 px-1 cursor-pointer">
         <div className="flex items-center justify-center rounded-full mr-3 border border-white bg-blue-600 w-10 h-10">
           KR
         </div>

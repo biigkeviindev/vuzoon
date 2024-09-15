@@ -3,7 +3,7 @@ import React from "react";
 const AssetCard = ({ asset }: any) => {
   return (
     <div className="w-full md:w-1/2 lg:w-1/3  p-2">
-      <div className="m-h-[280px]  rounded-lg bg-[#d3d3e0] text-black">
+      <div className="m-h-[280px] shadow-md  rounded-lg bg-[#fff] text-black">
         <div>
           <img
             src="https://d23t4e7dm0xzj0.cloudfront.net/MLG-8/images/1720098967004_2024_07_02_dormitorio_nalon_3_3_mlg_8_ml_1.png"
@@ -11,7 +11,7 @@ const AssetCard = ({ asset }: any) => {
             alt=""
           />
         </div>
-        <div className="px-5 py-5 flex flex-col gap-3 pb-10">
+        <div className="px-5 py-14 flex flex-col gap-3 pb-10">
           <div className="flex justify-between border-1">
             <h3 className=" text-xl">{asset.name}</h3>
             <span className="font-bold text-xl">{asset.salePrice} €</span>
