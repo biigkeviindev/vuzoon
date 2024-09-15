@@ -2,7 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap");
+
 body {
-  background-color: #131a25;
-  color: white;
+  background-color: #15182d;
+  font-family: "Onest", sans-serif;
+  color: #e5e7eb;
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE y Edge */
+    scrollbar-width: none; /* Firefox */
+  }
 }
