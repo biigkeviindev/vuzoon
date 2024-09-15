@@ -18,7 +18,6 @@ const signup = () => {
   const submit = async (values: any) => {
     try {
       const createCustomer = await axios.post(api_customer_post, values);
-      console.log(createCustomer.status);
       if (createCustomer.status === 200) {
         router.push("/dashboard/properties");
       }
