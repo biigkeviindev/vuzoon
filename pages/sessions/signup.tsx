@@ -69,7 +69,11 @@ const Signup = () => {
               </div>
               <div className="flex flex-col mb-4">
                 <label className="text-[#55565d]">Contraseña</label>
-                <input {...register("password")} type="text" placeholder="" />
+                <input
+                  {...register("password")}
+                  type="password"
+                  placeholder=""
+                />
               </div>
               <div className="flex flex-col mb-4">
                 <label className="text-[#55565d]">
