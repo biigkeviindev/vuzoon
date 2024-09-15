@@ -1,5 +1,6 @@
 import { api_customer_post } from "@/config/api-links";
 import axios from "axios";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -28,14 +29,17 @@ const Signup = () => {
 
   return (
     <div className="flex  min-h-screen bg-gradient-to-r from-blue-100 via-purple-100 to-blue-200">
-      <div className="w-1/2 min-h-screen bg-[#30d59b]"></div>
-      <div className="w-1/2 px-24 rounded-md flex justify-center items-center">
-        <div className="w-full py-8 px-4 bg-white">
+      <div className="md:w-1/2 min-h-screen bg-[#30d59b]"></div>
+      <div className="w-full md:w-1/2 px-3  md:px-24 rounded-md flex justify-center items-center">
+        <div className="w-full py-8 px-4 bg-white rounded-md">
           <div className="flex flex-col items-center mb-10">
             <h2 className="text-[#30d59b] font-extrabold text-[24px]">
-              ¡Hola! Te estábamos esperando
+              Regístrate
             </h2>
-            <p className="font-bold">Empieza a invertir en pocos pasos</p>
+            <Link href="/sessions/signin">
+              ¿Ya tienes una cuenta?{" "}
+              <span className="font-bold cursor-pointer">Inicia sesión</span>
+            </Link>
           </div>
           <div>
             <form onSubmit={handleSubmit(submit)}>

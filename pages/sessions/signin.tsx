@@ -1,4 +1,5 @@
 import { signIn } from "next-auth/react";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -7,14 +8,6 @@ const Signup = () => {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const {
-    register,
-    handleSubmit,
-    getValues,
-    watch,
-    formState: { errors },
-  } = useForm();
 
   const login = async () => {
     try {
@@ -27,6 +20,7 @@ const Signup = () => {
       console.error(e);
     }
   };
+
   return (
     <div className="flex  min-h-screen bg-gradient-to-r from-blue-100 via-purple-100 to-blue-200">
       <div className="md:w-1/2 min-h-screen bg-[#30d59b]"></div>
@@ -36,6 +30,10 @@ const Signup = () => {
             <h2 className="text-[#30d59b] font-extrabold text-[24px]">
               Iniciar sesión
             </h2>
+            <Link href="/sessions/signup">
+              ¿No tienes una cuenta?{" "}
+              <span className="font-bold cursor-pointer">Regístrate</span>
+            </Link>
           </div>
           <div>
             <form>
@@ -53,7 +51,7 @@ const Signup = () => {
                 <input
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  type="text"
+                  type="password"
                   placeholder=""
                 />
               </div>
