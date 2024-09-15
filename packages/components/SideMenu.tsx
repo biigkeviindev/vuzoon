@@ -17,7 +17,7 @@ const SideMenu = () => {
       <div className="py-8">
         <nav>
           {NavigationItems.map((entry: any, index: number) => (
-            <div className="py-2 cursor-pointer">
+            <div className="py-2 cursor-pointer" key={index}>
               <p className="flex items-center font-bold">
                 <span className="mr-3">{entry.icon}</span>
                 {entry.title}

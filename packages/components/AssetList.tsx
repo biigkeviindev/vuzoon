@@ -10,7 +10,7 @@ const AssetList = () => {
     <div>
       <div className="flex flex-col flex-wrap md:flex-row">
         {assets.map((entry: RealStateAsset, index: number) => {
-          return <AssetCard asset={entry} />;
+          return <AssetCard key={index} asset={entry} />;
         })}
       </div>
     </div>
