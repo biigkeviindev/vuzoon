@@ -5,10 +5,10 @@ import SideMenu from "./SideMenu";
 const Layout = ({ content, page }: any) => {
   return (
     <div className="flex">
-      <div className="w-1/5 bg-[#17212e]">
+      <div className="md:w-1/5 bg-[#17212e]">
         <SideMenu />
       </div>
-      <div className="w-4/5 h-[100vh] overflow-y-scroll no-scrollbar">
+      <div className="w-full md:w-4/5 h-[100vh] overflow-y-scroll no-scrollbar">
         <div className="px-5 flex shadow- items-center fixed w-full h-[10vh] text-white bg-[#1a2543]">
           <h1 className="text-xl font-bold">{page}</h1>
         </div>
