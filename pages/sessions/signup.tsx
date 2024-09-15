@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
-const signup = () => {
+const Signup = () => {
   const [condition, setConditions] = useState(false);
   const router = useRouter();
 
@@ -88,4 +88,4 @@ const signup = () => {
   );
 };
 
-export default signup;
+export default Signup;
