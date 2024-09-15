@@ -1,10 +1,12 @@
 import { api_customer_post } from "@/config/api-links";
 import axios from "axios";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
 const signup = () => {
   const [condition, setConditions] = useState(false);
+  const router = useRouter();
 
   const {
     register,
@@ -16,7 +18,10 @@ const signup = () => {
   const submit = async (values: any) => {
     try {
       const createCustomer = await axios.post(api_customer_post, values);
-      console.log(createCustomer);
+      console.log(createCustomer.status);
+      if (createCustomer.status === 200) {
+        router.push("/dashboard/properties");
+      }
     } catch (e) {
       console.error(e);
     }
