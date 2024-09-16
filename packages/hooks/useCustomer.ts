@@ -27,6 +27,7 @@ const useCustomer = () => {
 
   return {
     customer,
+    getCustomer,
   };
 };
 

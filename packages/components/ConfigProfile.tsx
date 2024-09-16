@@ -2,10 +2,32 @@ import React, { useEffect } from "react";
 import useCustomer from "../hooks/useCustomer";
 import { useForm } from "react-hook-form";
 import ProfileNavBar from "./ProfileNavBar";
+import axios from "axios";
+import { api_customer_put } from "@/config/api-links";
+import { toast } from "react-toastify";
+import { signOut } from "next-auth/react";
 
 const ConfigProfile = () => {
-  const { customer } = useCustomer();
+  const { customer, getCustomer } = useCustomer();
   const { register, setValue, handleSubmit } = useForm();
+
+  const updateInfo = async (values: any) => {
+    try {
+      const update = await axios.post(api_customer_put, {
+        id: customer?.id,
+        name: values.name,
+        lastname: values.lastname,
+      });
+      if (update.status === 200) {
+        toast.success("Tus datos se han actualizado.");
+        getCustomer();
+      } else {
+        toast.warning("Ha habido un problema, intentalo más tarde.");
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   useEffect(() => {
     setValue("name", customer?.name);
@@ -22,7 +44,7 @@ const ConfigProfile = () => {
         </div>
 
         <section className="flex flex-col gap-3 pt-16">
-          <form>
+          <form onSubmit={handleSubmit(updateInfo)}>
             <div className="flex gap-2 mb-3">
               <div className="flex flex-col w-1/2">
                 <span className="mb-2">Nombre</span>
@@ -53,15 +75,25 @@ const ConfigProfile = () => {
                 disabled
               />
             </div>
+            <div className="flex gap-3 pt-8">
+              <button
+                onClick={() =>
+                  signOut({
+                    callbackUrl: "/",
+                  })
+                }
+                className="w-1/2 px-4 py-2 rounded-full bg-[#e10e0e] font-bold"
+              >
+                Cerrar sesión
+              </button>
+              <button
+                type="submit"
+                className="w-1/2 px-4 py-2 rounded-full bg-[#e0d39c] text-black font-bold"
+              >
+                Guardar
+              </button>
+            </div>
           </form>
-          <div className="flex gap-3 pt-8">
-            <button className="w-1/2 px-4 py-2 rounded-full bg-[#e10e0e] font-bold">
-              Cerrar sesión
-            </button>
-            <button className="w-1/2 px-4 py-2 rounded-full bg-[#e0d39c] text-black font-bold">
-              Guardar
-            </button>
-          </div>
         </section>
       </div>
     </div>
