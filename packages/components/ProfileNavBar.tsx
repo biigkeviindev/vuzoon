@@ -7,15 +7,15 @@ const ProfileNavBar = () => {
   return (
     <div className="flex w-full justify-around mb-20 navigation-bar">
       <nav className="w-full flex justify-around gap-20">
-        <p className="font-semibold flex gap-2 items-center">
+        <p className="cursor-pointer font-semibold flex gap-2 items-center">
           <VscVerifiedFilled />
           KYC
         </p>
-        <p className="font-semibold flex gap-2 items-center">
+        <p className="cursor-pointer font-semibold flex gap-2 items-center">
           <BsBank2 />
           Mis transferencias
         </p>
-        <p className="font-semibold flex gap-2 items-center">
+        <p className="cursor-pointer font-semibold flex gap-2 items-center">
           <FaUserEdit />
           Perfil
         </p>
