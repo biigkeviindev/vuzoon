@@ -1,3 +1,4 @@
+import { loadUserSessionStorage } from "@/utils/storage";
 import axios from "axios";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
@@ -15,6 +16,7 @@ const Signup = () => {
         password: password,
       });
       if (validateUser.data.isValidate) {
+        loadUserSessionStorage({ email: email });
         await signIn("credentials", {
           username: email,
           password: password,

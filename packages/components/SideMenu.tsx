@@ -4,9 +4,15 @@ import React from "react";
 import { FaSignOutAlt } from "react-icons/fa";
 import useCustomer from "../hooks/useCustomer";
 import { getFirstLetter } from "@/utils/strings";
+import { deleteItemStorage, STORAGE_CUSTOMER_SESSION } from "@/utils/storage";
 
 const SideMenu = () => {
   const { customer }: any = useCustomer();
+
+  const closeSession = () => {
+    deleteItemStorage(STORAGE_CUSTOMER_SESSION);
+    signOut({ callbackUrl: "/sessions/signin" });
+  };
 
   return (
     <aside className="hidden md:flex md:flex-col px-8 bg-[#1a2543] text-white h-[100vh]">
@@ -35,7 +41,7 @@ const SideMenu = () => {
           ))}
           <div className="py-2 cursor-pointer">
             <p
-              onClick={() => signOut({ callbackUrl: "/sessions/signin" })}
+              onClick={() => closeSession()}
               className="flex items-center font-bold"
             >
               <FaSignOutAlt className="mr-3" />
