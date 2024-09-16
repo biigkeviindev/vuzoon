@@ -12,6 +12,7 @@ declare module "next-auth" {
 }
 
 export const authOptions = {
+  secret: process.env.NEXTAUTH_SECRET,
   providers: [
     // @ts-ignore
     Credentials({
@@ -34,7 +35,6 @@ export const authOptions = {
         if (userToValidate && validatePassword) {
           return userToValidate as any;
         }
-
         return null;
       },
     }),
