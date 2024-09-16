@@ -1,21 +1,28 @@
+import axios from "axios";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import React, { useState } from "react";
-import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 const Signup = () => {
-  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const login = async () => {
     try {
-      const result = await signIn("credentials", {
-        username: email,
+      const validateUser = await axios.post("/api/auth/validate-session", {
+        email: email,
         password: password,
-        callbackUrl: "/dashboard/properties",
       });
+      if (validateUser.data.isValidate) {
+        await signIn("credentials", {
+          username: email,
+          password: password,
+          callbackUrl: "/dashboard/properties",
+        });
+      } else {
+        toast.error("Usuario o Contraseña incorrectos.");
+      }
     } catch (e) {
       console.error(e);
     }

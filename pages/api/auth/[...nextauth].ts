@@ -37,6 +37,24 @@ export const authOptions = {
         }
         return null;
       },
+      // @ts-ignore
+      callbacks: {
+        async signIn({ user, account, profile, email, credentials }: any) {
+          // Si el usuario no es encontrado o las credenciales fallan
+          if (!user) {
+            throw new Error("Credenciales incorrectas");
+          }
+          return true;
+        },
+        async redirect({ url, baseUrl }: any) {
+          // Si existe un error en la URL, redirige a la página personalizada de errores
+          return baseUrl + "/sessions/signin?error=CredentialsSignin";
+        },
+      },
+      pages: {
+        signIn: "/sessions/signin", // Tu página personalizada de login
+        error: "/sessions/signin", // Página personalizada en caso de error
+      },
     }),
   ],
 };
