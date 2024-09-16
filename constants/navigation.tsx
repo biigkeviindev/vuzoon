@@ -8,32 +8,32 @@ import { SiHiveBlockchain } from "react-icons/si";
 export const NavigationItems = [
   {
     title: "Dashboard",
-    link: "",
-    icon: <RxDashboard />,
+    link: "/dashboard",
+    icon: <RxDashboard size={18} />,
   },
   {
     title: "Inmuebles",
-    link: "",
-    icon: <FaHouseCircleCheck />,
+    link: "/dashboard/properties",
+    icon: <FaHouseCircleCheck size={18} />,
   },
   {
     title: "P2P",
-    link: "",
-    icon: <RiP2pFill />,
+    link: "/dashboard/p2p",
+    icon: <RiP2pFill size={18} />,
   },
   {
     title: "Wallets",
-    link: "",
-    icon: <HiWallet />,
+    link: "/dashboard/wallets",
+    icon: <HiWallet size={18} />,
   },
   {
     title: "Dapp",
     link: "",
-    icon: <SiHiveBlockchain />,
+    icon: <SiHiveBlockchain size={18} />,
   },
   {
     title: "Configuración",
-    link: "",
-    icon: <DiAptana />,
+    link: "/dashboard/config/profile",
+    icon: <DiAptana size={24} />,
   },
 ];

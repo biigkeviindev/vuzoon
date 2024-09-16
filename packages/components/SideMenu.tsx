@@ -5,9 +5,11 @@ import { FaSignOutAlt } from "react-icons/fa";
 import useCustomer from "../hooks/useCustomer";
 import { getFirstLetter } from "@/utils/strings";
 import { deleteItemStorage, STORAGE_CUSTOMER_SESSION } from "@/utils/storage";
+import { useRouter } from "next/router";
 
 const SideMenu = () => {
   const { customer }: any = useCustomer();
+  const router = useRouter();
 
   const closeSession = () => {
     deleteItemStorage(STORAGE_CUSTOMER_SESSION);
@@ -15,25 +17,29 @@ const SideMenu = () => {
   };
 
   return (
-    <aside className="hidden md:flex md:flex-col px-8 bg-[#1a2543] text-white h-[100vh]">
+    <aside className="hidden md:flex md:flex-col px-3 bg-[#1a2543] text-white h-[100vh]">
       <img className="h-[200px]" src="/logo.svg" alt="Logo Vuzoon" />
       <div className="flex bg-[#ffffff20] rounded-2xl py-2 px-1 cursor-pointer">
-        <div className="flex items-center justify-center rounded-full mr-3 border border-white bg-blue-600 w-10 h-10">
+        <div className="flex items-center justify-center text-[14px] rounded-full mr-3 border border-white bg-blue-600 w-10 h-10">
           {getFirstLetter(customer?.name)}
           {getFirstLetter(customer?.lastname)}
         </div>
         <div>
-          <h3 className="font-bold">
+          <h3 className="font-bold text-[14px]">
             {customer?.name} {customer?.lastname}
           </h3>
-          <p className="text-[12px]">Admin/Role</p>
+          <p className="text-[12px] text-gray-300">Admin/Role</p>
         </div>
       </div>
       <div className="py-8">
         <nav>
           {NavigationItems.map((entry: any, index: number) => (
-            <div className="py-2 cursor-pointer" key={index}>
-              <p className="flex items-center font-bold">
+            <div
+              className="py-2 cursor-pointer"
+              key={index}
+              onClick={() => router.push(entry.link)}
+            >
+              <p className="flex items-center font-bold text-[12px]">
                 <span className="mr-3">{entry.icon}</span>
                 {entry.title}
               </p>
@@ -42,9 +48,9 @@ const SideMenu = () => {
           <div className="py-2 cursor-pointer">
             <p
               onClick={() => closeSession()}
-              className="flex items-center font-bold"
+              className="flex items-center font-bold text-[12px]"
             >
-              <FaSignOutAlt className="mr-3" />
+              <FaSignOutAlt className="mr-3" size={18} />
               Cerrar Sesión
             </p>
           </div>
