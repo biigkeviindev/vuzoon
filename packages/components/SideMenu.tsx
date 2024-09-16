@@ -17,7 +17,7 @@ const SideMenu = () => {
   };
 
   return (
-    <aside className="hidden md:flex md:flex-col pt-20 px-3 bg-[#1a2543] text-white h-[100vh]">
+    <aside className="hidden md:flex md:flex-col pt-20 px-3 bg-[#17212e] text-white h-[100vh]">
       <div className="flex justify-center">
         <img
           className=" w-[130px] mb-12"

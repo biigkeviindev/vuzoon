@@ -20,7 +20,7 @@ const AssetCard = ({ asset }: any) => {
             </span>
           </div>
           <div className="flex gap-6 ">
-            <span className="text-xs font-bold px-4 py-1 bg-[#f1f2f3] rounded-full">
+            <span className="text-xs font-bold px-4 py-1 bg-[#e5e6e6] rounded-full">
               {asset.tokenCode}
             </span>
             <span className="text-xs px-4 py-1 bg-[#fff7e3] text-[#f79b0c] rounded-full">
