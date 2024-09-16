@@ -26,3 +26,7 @@ input {
   background-color: #f1f2f3;
   border: 0px;
 }
+
+.avatar {
+  border: 8px solid #e0d39c;
+}

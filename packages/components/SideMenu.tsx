@@ -25,7 +25,7 @@ const SideMenu = () => {
           alt="Logo Vuzoon"
         />
       </div>
-      <div className="flex rounded-2xl py-2 px-1 cursor-pointer">
+      <div className="flex rounded-2xl py-2 px-1 cursor-pointer pl-10">
         <div className="flex items-center justify-center text-[14px] rounded-full mr-3 border border-white font-bold text-black bg-[#E0D39C] w-10 h-10">
           {getFirstLetter(customer?.name)}
           {getFirstLetter(customer?.lastname)}
@@ -41,22 +41,22 @@ const SideMenu = () => {
         <nav>
           {NavigationItems.map((entry: any, index: number) => (
             <div
-              className="py-2 cursor-pointer"
+              className="py-2 cursor-pointer pl-10"
               key={index}
               onClick={() => router.push(entry.link)}
             >
-              <p className="flex items-center font-bold text-[12px]">
+              <p className="flex items-center font-bold text-[14px]">
                 <span className="mr-3">{entry.icon}</span>
                 {entry.title}
               </p>
             </div>
           ))}
-          <div className="py-2 cursor-pointer">
+          <div className="py-2 cursor-pointer pl-10">
             <p
               onClick={() => closeSession()}
               className="flex items-center font-bold text-[12px]"
             >
-              <FaSignOutAlt className="mr-3" size={18} />
+              <FaSignOutAlt className="mr-3" size={20} />
               Cerrar Sesión
             </p>
           </div>

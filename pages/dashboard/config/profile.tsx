@@ -1,4 +1,5 @@
 import AssetList from "@/packages/components/AssetList";
+import ConfigProfile from "@/packages/components/ConfigProfile";
 import Layout from "@/packages/components/Layout";
 import { checkCustomerSessionStorage } from "@/utils/storage";
 import { useSession } from "next-auth/react";
@@ -19,7 +20,7 @@ const Profile = () => {
 
   return (
     <div>
-      <Layout page="Configuración" content={<p>kevin</p>}></Layout>
+      <Layout page="Configuración" content={<ConfigProfile />}></Layout>
     </div>
   );
 };

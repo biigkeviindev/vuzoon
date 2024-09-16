@@ -9,31 +9,31 @@ export const NavigationItems = [
   {
     title: "Dashboard",
     link: "/dashboard",
-    icon: <RxDashboard size={18} />,
+    icon: <RxDashboard size={20} />,
   },
   {
     title: "Inmuebles",
     link: "/dashboard/properties",
-    icon: <FaHouseCircleCheck size={18} />,
+    icon: <FaHouseCircleCheck size={20} />,
   },
   {
     title: "P2P",
     link: "/dashboard/p2p",
-    icon: <RiP2pFill size={18} />,
+    icon: <RiP2pFill size={20} />,
   },
   {
     title: "Wallets",
     link: "/dashboard/wallets",
-    icon: <HiWallet size={18} />,
+    icon: <HiWallet size={20} />,
   },
   {
     title: "Dapp",
     link: "",
-    icon: <SiHiveBlockchain size={18} />,
+    icon: <SiHiveBlockchain size={20} />,
   },
   {
     title: "Configuración",
     link: "/dashboard/config/profile",
-    icon: <DiAptana size={24} />,
+    icon: <DiAptana size={20} />,
   },
 ];

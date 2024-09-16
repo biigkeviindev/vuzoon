@@ -1,6 +1,6 @@
 import { api_assets_get } from "@/config/api-links";
 import axios from "axios";
-import React, { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const useAssets = () => {
   const [assets, setAssets] = useState();

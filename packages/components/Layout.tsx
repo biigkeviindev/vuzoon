@@ -16,7 +16,7 @@ const Layout = ({ content, page }: any) => {
             <MdOutlineMenu size={30} className="mr-3" />
             <h1 className="text-xl font-bold">{page}</h1>
           </div>
-          <div className="flex justify-end w-2/3 pr-[10rem]">
+          <div className="flex justify-end w-2/3 pr-[13rem]">
             <AssetDashboard />
           </div>
         </div>
