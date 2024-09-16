@@ -1,4 +1,5 @@
 import { DB_CONNECTION, DB_NAME } from "@/config/connections";
+import { verifyPassword } from "@/utils/passwords";
 import axios from "axios";
 import { MongoClient } from "mongodb";
 import NextAuth from "next-auth/next";
@@ -26,10 +27,11 @@ export const authOptions = {
         const userToValidate = await collection.findOne({
           email: credentials.username,
         });
-        if (
-          userToValidate &&
-          userToValidate.password === credentials.password
-        ) {
+        const validatePassword = await verifyPassword(
+          credentials.password,
+          userToValidate?.password
+        );
+        if (userToValidate && validatePassword) {
           return userToValidate as any;
         }
 

@@ -1,4 +1,5 @@
 import { DB_CONNECTION, DB_NAME } from "@/config/connections";
+import { encryptPassword } from "@/utils/passwords";
 import { MongoClient } from "mongodb";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { v4 as uuidv4 } from "uuid";
@@ -14,14 +15,14 @@ export default async function handler(req: NextApiRequest, res: any) {
     if (userExist) {
       return res.status(409).json({ message: "El email ya esta registrado" });
     }
-
+    const passwordEncrypted = await encryptPassword(req.body.password);
     const createUser = await collection.insertOne({
       id: uuidv4(),
       email: req.body.email,
       name: req.body.name,
       lastname: req.body.lastname,
       reffer: req.body.reffer,
-      password: req.body.password,
+      password: passwordEncrypted,
       isVerified: false,
       isBegin: true,
       kyc: false,
