@@ -30,3 +30,8 @@ input {
 .avatar {
   border: 8px solid #e0d39c;
 }
+
+.navigation-bar {
+  border-bottom: 4px solid #344054;
+  padding-bottom: 8px;
+}

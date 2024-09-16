@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import useCustomer from "../hooks/useCustomer";
 import { useForm } from "react-hook-form";
+import ProfileNavBar from "./ProfileNavBar";
 
 const ConfigProfile = () => {
   const { customer } = useCustomer();
@@ -10,11 +11,12 @@ const ConfigProfile = () => {
     setValue("name", customer?.name);
     setValue("lastname", customer?.lastname);
     setValue("email", customer?.email);
-  }, []);
+  }, [customer]);
 
   return (
     <div className="w-full flex justify-center h-[70vh] bg- pt-9 text-white">
       <div className="flex flex-col items-center">
+        <ProfileNavBar />
         <div className="w-[100px] h-[100px] border-x-blue-950 avatar rounded-full flex justify-center items-center  ">
           <p className="text-[28px] font-extrabold text-white">KR</p>
         </div>
