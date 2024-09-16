@@ -1,24 +1,23 @@
 import { api_customer_post } from "@/config/api-links";
+import { validatePassword } from "@/utils/strings";
 import axios from "axios";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 
 const Signup = () => {
   const [condition, setConditions] = useState(false);
-  const router = useRouter();
 
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit } = useForm();
 
   const submit = async (values: any) => {
+    if (validatePassword(values.password) !== true) {
+      toast.error(validatePassword(values.password));
+      return;
+    }
+
     try {
       const createCustomer = await axios.post(api_customer_post, values);
       if (createCustomer.status === 200) {

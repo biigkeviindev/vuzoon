@@ -1,3 +1,4 @@
+import { formatCurrency } from "@/utils/strings";
 import React from "react";
 
 const AssetCard = ({ asset }: any) => {
@@ -14,7 +15,9 @@ const AssetCard = ({ asset }: any) => {
         <div className="px-5 py-14 flex flex-col gap-3 pb-10">
           <div className="flex justify-between border-1">
             <h3 className=" text-xl">{asset.name}</h3>
-            <span className="font-bold text-xl">{asset.salePrice} €</span>
+            <span className="font-bold text-xl">
+              {formatCurrency(asset.salePrice)}
+            </span>
           </div>
           <div className="flex gap-6 ">
             <span className="text-xs font-bold px-4 py-1 bg-[#f1f2f3] rounded-full">
@@ -27,17 +30,21 @@ const AssetCard = ({ asset }: any) => {
           <div className="flex justify-between  ">
             <div>
               <p className="text-xs">Financiado</p>
-              <span className="text-base font-bold">{asset.financed} €</span>
+              <span className="text-base font-bold">
+                {formatCurrency(asset.financed)}
+              </span>
             </div>
             <div>
               <p className="text-xs">Objetivo</p>
-              <span className="text-base font-bold">{asset.salePrice} €</span>
+              <span className="text-base font-bold">
+                {formatCurrency(asset.salePrice)}
+              </span>
             </div>
           </div>
           <div className="flex flex-col gap-3">
             <div className="flex justify-between ">
               <p className="text-base">Precio del token</p>
-              <span className="font-bold">{asset.tokenPrice} €</span>
+              <span className="font-bold">{asset.tokenPrice}</span>
             </div>
             <div className="text-base flex justify-between  ">
               <p className="text-base">Rentabilidad total estimada</p>
