@@ -17,10 +17,16 @@ const SideMenu = () => {
   };
 
   return (
-    <aside className="hidden md:flex md:flex-col px-3 bg-[#1a2543] text-white h-[100vh]">
-      <img className="h-[200px]" src="/logo.svg" alt="Logo Vuzoon" />
-      <div className="flex bg-[#ffffff20] rounded-2xl py-2 px-1 cursor-pointer">
-        <div className="flex items-center justify-center text-[14px] rounded-full mr-3 border border-white bg-blue-600 w-10 h-10">
+    <aside className="hidden md:flex md:flex-col pt-20 px-3 bg-[#1a2543] text-white h-[100vh]">
+      <div className="flex justify-center">
+        <img
+          className=" w-[130px] mb-12"
+          src="/logo-web.svg"
+          alt="Logo Vuzoon"
+        />
+      </div>
+      <div className="flex rounded-2xl py-2 px-1 cursor-pointer">
+        <div className="flex items-center justify-center text-[14px] rounded-full mr-3 border border-white font-bold text-black bg-[#E0D39C] w-10 h-10">
           {getFirstLetter(customer?.name)}
           {getFirstLetter(customer?.lastname)}
         </div>
