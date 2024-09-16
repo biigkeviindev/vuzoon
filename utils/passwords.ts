@@ -10,7 +10,6 @@ export const encryptPassword = async (password: string) => {
   }
 };
 
-//Save changes
 export const verifyPassword = async (
   password: string,
   hashedPassword: string
