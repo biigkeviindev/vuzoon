@@ -1,7 +1,17 @@
 export type Customer = {
   email: string;
   id: string | null;
-  kyc: boolean;
+  kyc: {
+    personal: {
+      name: string;
+      lastname: string;
+      bornDate: string;
+      city: string;
+      country: string;
+      phone: string;
+      identity: string;
+    };
+  };
   lastname: string;
   name: string;
   password: string;
