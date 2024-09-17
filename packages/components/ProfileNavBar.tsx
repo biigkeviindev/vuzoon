@@ -1,13 +1,19 @@
+import { useRouter } from "next/router";
 import React from "react";
 import { BsBank2 } from "react-icons/bs";
 import { FaUserEdit } from "react-icons/fa";
 import { VscVerifiedFilled } from "react-icons/vsc";
 
 const ProfileNavBar = () => {
+  const router = useRouter();
+
   return (
     <div className="flex w-full justify-around mb-20 navigation-bar">
       <nav className="w-full flex justify-around gap-20">
-        <p className="cursor-pointer font-semibold flex gap-2 items-center">
+        <p
+          onClick={() => router.push("/dashboard/config/kyc")}
+          className="cursor-pointer font-semibold flex gap-2 items-center"
+        >
           <VscVerifiedFilled />
           KYC
         </p>
@@ -15,7 +21,10 @@ const ProfileNavBar = () => {
           <BsBank2 />
           Mis transferencias
         </p>
-        <p className="cursor-pointer font-semibold flex gap-2 items-center">
+        <p
+          onClick={() => router.push("/dashboard/config/profile")}
+          className="cursor-pointer font-semibold flex gap-2 items-center"
+        >
           <FaUserEdit />
           Perfil
         </p>

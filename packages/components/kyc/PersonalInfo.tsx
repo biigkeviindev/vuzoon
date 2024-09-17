@@ -16,22 +16,22 @@ const PersonalInfo = ({ handler }: any) => {
   } = useForm();
 
   useEffect(() => {
-    setValue("name", customer?.kyc.personal?.name);
-    setValue("lastname", customer?.kyc.personal.lastname);
-    setValue("identity", customer?.kyc.personal.identity);
-    setValue("bornDate", customer?.kyc.personal.bornDate);
-    setValue("phone", customer?.kyc.personal.phone);
-    setValue("country", customer?.kyc.personal.country);
-    setValue("city", customer?.kyc.personal.city);
+    setValue("name", customer?.personal?.name);
+    setValue("lastname", customer?.personal?.lastname);
+    setValue("identity", customer?.personal?.identity);
+    setValue("bornDate", customer?.personal?.bornDate);
+    setValue("phone", customer?.personal?.phone);
+    setValue("country", customer?.personal?.country);
+    setValue("city", customer?.personal?.city);
   }, [customer]);
 
   const submitPersonalInfo = async (values: any) => {
     try {
-      const savePersonalInfo = await axios.post(api_kyc_post, {
+      await axios.post(api_kyc_post, {
         id: customer?.id,
         ...values,
       });
-      console.log(savePersonalInfo);
+      handler(2);
     } catch (e) {
       console.error(e);
     }

@@ -1,11 +1,25 @@
+import { api_kyc_financial } from "@/config/api-links";
 import { financialQuestions } from "@/constants/kyc";
+import useCustomer from "@/packages/hooks/useCustomer";
+import axios from "axios";
 import React from "react";
 import { useForm } from "react-hook-form";
 
 const FinancialInfo = ({ handler }: any) => {
   const { register, setValue, handleSubmit } = useForm();
+  const { customer } = useCustomer();
 
-  const SaveFinancialInfo = (values: any) => console.log(values);
+  const SaveFinancialInfo = async (values: any) => {
+    await axios.post(api_kyc_financial, {
+      id: customer?.id,
+      ...values,
+    });
+    handler(3);
+    try {
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   return (
     <div className="w-full flex flex-col justify-center items-center text-white   mb-9">
@@ -54,7 +68,7 @@ const FinancialInfo = ({ handler }: any) => {
             </div>
             <div className="flex justify-center">
               <button
-                onClick={() => handler(3)}
+                // onClick={() => handler(3)}
                 className="w-1/2 px-4 py-2 rounded-full bg-[#e0d39c] text-black font-bold"
               >
                 Continuar

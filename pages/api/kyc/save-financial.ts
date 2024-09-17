@@ -17,14 +17,8 @@ export default async function handler(
     },
     {
       $set: {
-        personal: {
-          name: req.body.name,
-          lastname: req.body.lastname,
-          identity: req.body.identity,
-          bornDate: req.body.bornDate,
-          phone: req.body.phone,
-          country: req.body.country,
-          city: req.body.city,
+        financial: {
+          ...req.body,
         },
       },
     }
