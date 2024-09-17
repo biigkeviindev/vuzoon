@@ -8,24 +8,24 @@ const ProfileNavBar = () => {
   const router = useRouter();
 
   return (
-    <div className="flex w-full justify-around mb-20 navigation-bar">
+    <div className="flex w-full px-[250px] justify-around mb-10 navigation-bar">
       <nav className="w-full flex justify-around gap-20">
         <p
           onClick={() => router.push("/dashboard/config/kyc")}
           className="cursor-pointer font-semibold flex gap-2 items-center"
         >
-          <VscVerifiedFilled />
+          <VscVerifiedFilled size={24} />
           KYC
         </p>
         <p className="cursor-pointer font-semibold flex gap-2 items-center">
-          <BsBank2 />
+          <BsBank2 size={24} />
           Mis transferencias
         </p>
         <p
           onClick={() => router.push("/dashboard/config/profile")}
           className="cursor-pointer font-semibold flex gap-2 items-center"
         >
-          <FaUserEdit />
+          <FaUserEdit size={24} />
           Perfil
         </p>
       </nav>

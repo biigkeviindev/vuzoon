@@ -6,10 +6,14 @@ import axios from "axios";
 import { api_customer_put } from "@/config/api-links";
 import { toast } from "react-toastify";
 import { signOut } from "next-auth/react";
+import { PiWarningBold } from "react-icons/pi";
+import { useRouter } from "next/router";
+import KycBanner from "./kyc/KycBanner";
 
 const ConfigProfile = () => {
   const { customer, getCustomer } = useCustomer();
   const { register, setValue, handleSubmit } = useForm();
+  const router = useRouter();
 
   const updateInfo = async (values: any) => {
     try {
@@ -36,14 +40,15 @@ const ConfigProfile = () => {
   }, [customer]);
 
   return (
-    <div className="w-full flex justify-center h-[70vh] bg- pt-9 text-white">
-      <div className="flex flex-col items-center">
+    <div className="w-full flex flex-col justify-center min-h-[70vh] bg- text-white">
+      {customer?.kycVerified === false ? <KycBanner /> : null}
+      <div className="flex flex-col items-center mt-10">
         <ProfileNavBar />
         <div className="w-[100px] h-[100px] border-x-blue-950 avatar rounded-full flex justify-center items-center  ">
           <p className="text-[28px] font-extrabold text-white">KR</p>
         </div>
 
-        <section className="flex flex-col gap-3 pt-16">
+        <section className="flex flex-col gap-3 pt-8">
           <form onSubmit={handleSubmit(updateInfo)}>
             <div className="flex gap-2 mb-3">
               <div className="flex flex-col w-1/2">

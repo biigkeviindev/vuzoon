@@ -25,8 +25,11 @@ export default async function handler(req: NextApiRequest, res: any) {
       password: passwordEncrypted,
       isVerified: false,
       isBegin: true,
-      kyc: false,
-      wallet: "",
+      kyc: null,
+      kycVerified: false,
+      financial: null,
+      personal: null,
+      wallet: null,
     });
 
     res.status(200).json({ result: createUser });

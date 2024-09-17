@@ -17,4 +17,5 @@ export type Customer = {
   reffer: string;
   wallet: string;
   _id: string;
+  kycVerified: boolean;
 };
