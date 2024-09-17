@@ -2,7 +2,7 @@ import { api_kyc_financial } from "@/config/api-links";
 import { financialQuestions } from "@/constants/kyc";
 import useCustomer from "@/packages/hooks/useCustomer";
 import axios from "axios";
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 
 const FinancialInfo = ({ handler }: any) => {
@@ -21,6 +21,20 @@ const FinancialInfo = ({ handler }: any) => {
     }
   };
 
+  console.log(customer?.financial);
+
+  useEffect(() => {
+    setValue(`1`, `${customer?.financial[1]}`);
+    setValue(`2`, `${customer?.financial[2]}`);
+    setValue(`3`, `${customer?.financial[3]}`);
+    setValue(`4`, `${customer?.financial[4]}`);
+    setValue(`5`, `${customer?.financial[5]}`);
+    setValue(`6`, `${customer?.financial[6]}`);
+    setValue(`7`, `${customer?.financial[7]}`);
+    setValue(`8`, `${customer?.financial[8]}`);
+    setValue(`9`, `${customer?.financial[9]}`);
+    setValue(`10`, `${customer?.financial[10]}`);
+  }, [customer]);
   return (
     <div className="w-full flex flex-col justify-center items-center text-white   mb-9">
       <section className="w-[700px]">
