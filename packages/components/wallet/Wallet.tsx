@@ -11,7 +11,8 @@ const Wallet = () => {
   const { address, connect } = useMetamask();
   const id = useSelector((state: any) => state.user.userData.id);
   const walletAddress = useSelector((state: any) => state.user.userData.wallet);
-
+  const user = useSelector((state: any) => state.user.userData);
+  console.log(user);
   const validateWallet = async () => {
     try {
       const validate = await axios.post(api_wallet_verify, {
@@ -32,7 +33,7 @@ const Wallet = () => {
 
   return (
     <div className="flex flex-col items-center justify-center text-white w-full">
-      <div className="flex flex-col items-center pt-[90px] w-[700px] text-center">
+      <div className="flex flex-col items-center pt-[50px] w-[700px] text-center">
         <h1 className="text-[#E0D39C] font-bold text-[30px]">Wallet</h1>
         <p className="text-white text-[14px] mb-5">
           Todos los usuarios tenemos una o más wallets. Con ellas podrás comprar
@@ -47,7 +48,7 @@ const Wallet = () => {
       </div>
       <div className="flex flex-col w-[700px] pt-9">
         <h2 className="text-[#E0D39C] font-bold mb-10 text-[20px]">
-          Wallets disponibles
+          Wallets Validadas
         </h2>
         <div className="w-full">
           <div className="flex justify-between w-full  border-2 border-solid border-[#e0d39c] p-8 rounded-md">
@@ -55,7 +56,7 @@ const Wallet = () => {
               <p className="flex items-center text-white font-bold">
                 {" "}
                 <BiStar color="#e0d39c" size={24} className="mr-4" />
-                {address}
+                {walletAddress}
               </p>
             </div>
             {walletAddress === address ? (
@@ -75,6 +76,37 @@ const Wallet = () => {
                 <span>Validar Wallet</span>
               </div>
             )}
+          </div>
+        </div>
+        <h2 className="text-[#E0D39C] font-bold mb-10 text-[20px] pt-8">
+          Wallet conectada
+        </h2>
+        <div className="w-full">
+          <div className="flex justify-between w-full  border-2 border-solid border-[#e0d39c] p-8 rounded-md">
+            <div>
+              <p className="flex items-center text-white font-bold">
+                {" "}
+                <BiStar color="#e0d39c" size={24} className="mr-4" />
+                {address}
+              </p>
+            </div>
+            {/* {walletAddress === address ? (
+              <div
+                onClick={() => validateWallet()}
+                className="cursor-pointer flex items-center px-4 rounded-full bg-[#e0d39c] text-black font-bold"
+              >
+                <div className="mr-2 rounded-full w-[15px] h-[15px] bg-green-500"></div>
+                <span>Validada</span>
+              </div>
+            ) : (
+              <div
+                onClick={() => validateWallet()}
+                className="cursor-pointer flex items-center px-4 rounded-full bg-[#e0d39c] text-black font-bold"
+              >
+                <div className="mr-2 rounded-full w-[15px] h-[15px] bg-yellow-500"></div>
+                <span>Validar Wallet</span>
+              </div>
+            )} */}
           </div>
         </div>
       </div>

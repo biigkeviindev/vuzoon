@@ -6,17 +6,7 @@ import useMetamask from "../hooks/useMetamask";
 import { MdVerified } from "react-icons/md";
 
 const AssetDashboard = () => {
-  const {
-    address,
-    balance,
-    chainId,
-    networkName,
-    blockNumber,
-    gasPrice,
-    txCount,
-    error,
-    connect,
-  } = useMetamask();
+  const { address, balance, error, connect } = useMetamask();
 
   useEffect(() => {
     connect();
