@@ -9,14 +9,17 @@ import { signOut } from "next-auth/react";
 import { PiWarningBold } from "react-icons/pi";
 import { useRouter } from "next/router";
 import KycBanner from "./kyc/KycBanner";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { deleteItemStorage, STORAGE_CUSTOMER_SESSION } from "@/utils/storage";
+import { fetchUserByEmail } from "@/config/redux/slices/userSlice";
+import { ThunkDispatch } from "@reduxjs/toolkit";
 
 const ConfigProfile = () => {
   const { customer, getCustomer } = useCustomer();
   const user = useSelector((state: any) => state.user.userData);
   const { register, setValue, handleSubmit } = useForm();
   const router = useRouter();
+  const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
 
   const updateInfo = async (values: any) => {
     try {
@@ -27,7 +30,7 @@ const ConfigProfile = () => {
       });
       if (update.status === 200) {
         toast.success("Tus datos se han actualizado.");
-        getCustomer();
+        dispatch(fetchUserByEmail(customer?.email || ""));
       } else {
         toast.warning("Ha habido un problema, intentalo más tarde.");
       }
