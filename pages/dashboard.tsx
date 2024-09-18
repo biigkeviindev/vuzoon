@@ -1,4 +1,5 @@
 import AssetList from "@/packages/components/AssetList";
+import DashboardTable from "@/packages/components/dashboard/DashboardTable";
 import Layout from "@/packages/components/Layout";
 import { checkCustomerSessionStorage } from "@/utils/storage";
 import { useSession } from "next-auth/react";
@@ -19,7 +20,7 @@ const Dashboard = () => {
 
   return (
     <div>
-      <Layout page="Dashboard" content={<p>kevin</p>}></Layout>
+      <Layout page="Dashboard" content={<DashboardTable />}></Layout>
     </div>
   );
 };
