@@ -6,19 +6,22 @@ import { checkCustomerSessionStorage, getUserData } from "@/utils/storage";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Dashboard = () => {
   const { data: session } = useSession();
   const router = useRouter();
   const dispatch = useDispatch();
+  const user = useSelector((state: any) => state.user.userData);
 
   useEffect(() => {
     if (!checkCustomerSessionStorage()) {
       router.push("/sessions/signin");
     } else {
-      const user = getUserData() || "";
-      dispatch(setUserData(JSON.parse(user)));
+      if (user === null) {
+        const user = getUserData() || "";
+        dispatch(setUserData(JSON.parse(user)));
+      }
     }
   }, []);
 

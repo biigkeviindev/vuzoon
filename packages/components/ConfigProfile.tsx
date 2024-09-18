@@ -9,9 +9,11 @@ import { signOut } from "next-auth/react";
 import { PiWarningBold } from "react-icons/pi";
 import { useRouter } from "next/router";
 import KycBanner from "./kyc/KycBanner";
+import { useSelector } from "react-redux";
 
 const ConfigProfile = () => {
   const { customer, getCustomer } = useCustomer();
+  const user = useSelector((state: any) => state.user.userData);
   const { register, setValue, handleSubmit } = useForm();
   const router = useRouter();
 
@@ -32,16 +34,16 @@ const ConfigProfile = () => {
       console.error(e);
     }
   };
-
+  console.log(user);
   useEffect(() => {
-    setValue("name", customer?.name);
-    setValue("lastname", customer?.lastname);
-    setValue("email", customer?.email);
+    setValue("name", user?.name);
+    setValue("lastname", user?.lastname);
+    setValue("email", user?.email);
   }, [customer]);
 
   return (
     <div className="w-full flex flex-col justify-center min-h-[70vh] bg- text-white">
-      {customer?.kycVerified === false ? <KycBanner /> : null}
+      {user?.kycVerified === false ? <KycBanner /> : null}
       <div className="flex flex-col items-center mt-10">
         <ProfileNavBar />
         <div className="w-[100px] h-[100px] border-x-blue-950 avatar rounded-full flex justify-center items-center  ">
