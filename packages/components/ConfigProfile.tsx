@@ -15,22 +15,20 @@ import { fetchUserByEmail } from "@/config/redux/slices/userSlice";
 import { ThunkDispatch } from "@reduxjs/toolkit";
 
 const ConfigProfile = () => {
-  const { customer, getCustomer } = useCustomer();
   const user = useSelector((state: any) => state.user.userData);
   const { register, setValue, handleSubmit } = useForm();
-  const router = useRouter();
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
 
   const updateInfo = async (values: any) => {
     try {
       const update = await axios.post(api_customer_put, {
-        id: customer?.id,
+        id: user?.id,
         name: values.name,
         lastname: values.lastname,
       });
       if (update.status === 200) {
         toast.success("Tus datos se han actualizado.");
-        dispatch(fetchUserByEmail(customer?.email || ""));
+        dispatch(fetchUserByEmail(user?.email || ""));
       } else {
         toast.warning("Ha habido un problema, intentalo más tarde.");
       }
@@ -38,12 +36,12 @@ const ConfigProfile = () => {
       console.error(e);
     }
   };
-  console.log(user);
+
   useEffect(() => {
     setValue("name", user?.name);
     setValue("lastname", user?.lastname);
     setValue("email", user?.email);
-  }, [customer]);
+  }, [user]);
 
   return (
     <div className="w-full flex flex-col justify-center min-h-[70vh] bg- text-white">
