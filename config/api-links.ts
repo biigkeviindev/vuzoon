@@ -6,3 +6,5 @@ export const api_customer_put = "/api/customer/put";
 
 export const api_kyc_post = "/api/kyc/save-personal";
 export const api_kyc_financial = "/api/kyc/save-financial";
+
+export const api_wallet_verify = "/api/customer/validate-wallet";

@@ -10,6 +10,7 @@ import { PiWarningBold } from "react-icons/pi";
 import { useRouter } from "next/router";
 import KycBanner from "./kyc/KycBanner";
 import { useSelector } from "react-redux";
+import { deleteItemStorage, STORAGE_CUSTOMER_SESSION } from "@/utils/storage";
 
 const ConfigProfile = () => {
   const { customer, getCustomer } = useCustomer();
@@ -84,11 +85,12 @@ const ConfigProfile = () => {
             </div>
             <div className="flex gap-3 pt-8">
               <button
-                onClick={() =>
+                onClick={() => {
+                  deleteItemStorage(STORAGE_CUSTOMER_SESSION);
                   signOut({
                     callbackUrl: "/",
-                  })
-                }
+                  });
+                }}
                 className="w-1/2 px-4 py-2 rounded-full bg-[#e10e0e] font-bold"
               >
                 Cerrar sesión

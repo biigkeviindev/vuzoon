@@ -1,5 +1,6 @@
 import AssetList from "@/packages/components/AssetList";
 import Layout from "@/packages/components/Layout";
+import Wallet from "@/packages/components/wallet/Wallet";
 import { checkCustomerSessionStorage } from "@/utils/storage";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
@@ -19,7 +20,7 @@ const Wallets = () => {
 
   return (
     <div>
-      <Layout page="Wallets" content={<p>kevin</p>}></Layout>
+      <Layout page="Wallets" content={<Wallet></Wallet>}></Layout>
     </div>
   );
 };

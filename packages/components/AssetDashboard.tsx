@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BsHouseCheckFill } from "react-icons/bs";
 import { FaMoneyBillTrendUp } from "react-icons/fa6";
 import { HiWallet } from "react-icons/hi2";
@@ -17,6 +17,10 @@ const AssetDashboard = () => {
     error,
     connect,
   } = useMetamask();
+
+  useEffect(() => {
+    connect();
+  }, []);
 
   return (
     <div className="flex gap-2">
