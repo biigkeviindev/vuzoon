@@ -4,18 +4,11 @@ import { checkCustomerSessionStorage } from "@/utils/storage";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const Properties = () => {
   const { data: session } = useSession();
   const router = useRouter();
-
-  useEffect(() => {
-    if (!checkCustomerSessionStorage()) {
-      router.push("/sessions/signin");
-    }
-  }, []);
-
-  if (!session) return null;
 
   return (
     <div>
