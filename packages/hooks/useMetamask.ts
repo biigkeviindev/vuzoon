@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
 import { ethers } from "ethers";
+declare global {
+  interface Window {
+    ethereum: any;
+  }
+}
 
 // Define tipos para el estado
 interface UseMetamaskData {
@@ -37,7 +42,6 @@ const useMetamask = (): UseMetamaskData => {
 
         // Crea un proveedor con ethers usando MetaMask
         const provider = new ethers.providers.Web3Provider(window.ethereum);
-
         // Obtén el balance de la cuenta en ETH
         const balanceWei = await provider.getBalance(account);
         setBalance(ethers.utils.formatEther(balanceWei));

@@ -1,13 +1,16 @@
+import { setUserData } from "@/config/redux/slices/userSlice";
 import { loadUserSessionStorage } from "@/utils/storage";
 import axios from "axios";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
 
   const login = async () => {
     try {
@@ -16,11 +19,12 @@ const Signup = () => {
         password: password,
       });
       if (validateUser.data.isValidate) {
-        loadUserSessionStorage({ email: email });
+        dispatch(setUserData(validateUser.data.user));
+        loadUserSessionStorage(validateUser.data.user);
         await signIn("credentials", {
           username: email,
           password: password,
-          callbackUrl: "/dashboard/properties",
+          callbackUrl: "/dashboard/",
         });
       } else {
         toast.error("Usuario o Contraseña incorrectos.");

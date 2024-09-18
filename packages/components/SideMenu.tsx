@@ -6,10 +6,13 @@ import useCustomer from "../hooks/useCustomer";
 import { getFirstLetter } from "@/utils/strings";
 import { deleteItemStorage, STORAGE_CUSTOMER_SESSION } from "@/utils/storage";
 import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
+import { setUserData } from "@/config/redux/slices/userSlice";
 
 const SideMenu = () => {
   const { customer }: any = useCustomer();
   const router = useRouter();
+  const dispatch = useDispatch();
 
   const closeSession = () => {
     deleteItemStorage(STORAGE_CUSTOMER_SESSION);
@@ -34,7 +37,18 @@ const SideMenu = () => {
           <h3 className="font-bold text-[14px]">
             {customer?.name} {customer?.lastname}
           </h3>
-          <p className="text-[12px] text-gray-300">Admin/Role</p>
+          <p
+            onClick={() => {
+              dispatch(
+                setUserData({
+                  name: "dsdasdas",
+                })
+              );
+            }}
+            className="text-[12px] text-gray-300"
+          >
+            Admin/Role
+          </p>
         </div>
       </div>
       <div className="py-8">

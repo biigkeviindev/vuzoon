@@ -6,6 +6,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 
 type Data = {
   isValidate: boolean;
+  user: any;
 };
 
 export default async function handler(
@@ -23,5 +24,5 @@ export default async function handler(
     userToValidate?.password
   );
 
-  res.status(200).json({ isValidate: validatePassword });
+  res.status(200).json({ isValidate: validatePassword, user: userToValidate });
 }
