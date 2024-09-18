@@ -11,8 +11,7 @@ const Wallet = () => {
   const { address, connect } = useMetamask();
   const id = useSelector((state: any) => state.user.userData.id);
   const walletAddress = useSelector((state: any) => state.user.userData.wallet);
-  const user = useSelector((state: any) => state.user.userData);
-  console.log(user);
+
   const validateWallet = async () => {
     try {
       const validate = await axios.post(api_wallet_verify, {
@@ -35,13 +34,13 @@ const Wallet = () => {
     <div className="flex flex-col items-center justify-center text-white w-full">
       <div className="flex flex-col items-center pt-[50px] w-[700px] text-center">
         <h1 className="text-[#E0D39C] font-bold text-[30px]">Wallet</h1>
-        <p className="text-white text-[14px] mb-5">
+        <p className="text-white text-[18px] mb-5">
           Todos los usuarios tenemos una o más wallets. Con ellas podrás comprar
           tokens, recibir rendimientos y reinvertir. Haz click en las wallets
           registradas para ver el detalle
         </p>
-        <p className="flex items-center text-[14px]">
-          <CiWarning />
+        <p className="flex items-center text-[14px] font-bold">
+          <CiWarning size={20} color="#e0d39c" />
           Tu wallet será tu billetera con la que interactuarás en
           Realtokenfunds.
         </p>
