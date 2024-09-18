@@ -4,7 +4,7 @@ import { RealStateAsset } from "@/types/assets";
 import { useSelector } from "react-redux";
 
 const AssetList = () => {
-  const assets = useSelector((state: any) => state.assets.assets);
+  const assets = useSelector((state: any) => state.assets.assets) || [];
 
   return (
     <div>

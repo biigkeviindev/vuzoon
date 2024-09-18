@@ -6,8 +6,6 @@ import axios from "axios";
 import { api_customer_put } from "@/config/api-links";
 import { toast } from "react-toastify";
 import { signOut } from "next-auth/react";
-import { PiWarningBold } from "react-icons/pi";
-import { useRouter } from "next/router";
 import KycBanner from "./kyc/KycBanner";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteItemStorage, STORAGE_CUSTOMER_SESSION } from "@/utils/storage";

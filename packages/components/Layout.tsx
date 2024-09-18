@@ -1,5 +1,4 @@
 import React from "react";
-import AssetCard from "./AssetCard";
 import SideMenu from "./SideMenu";
 import { MdOutlineMenu } from "react-icons/md";
 import AssetDashboard from "./AssetDashboard";

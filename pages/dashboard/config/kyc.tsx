@@ -1,11 +1,9 @@
-import AssetList from "@/packages/components/AssetList";
 import Documents from "@/packages/components/kyc/Documents";
 import FinancialInfo from "@/packages/components/kyc/FinancialInfo";
 import PersonalInfo from "@/packages/components/kyc/PersonalInfo";
 import Resume from "@/packages/components/kyc/Resume";
 import Stepper from "@/packages/components/kyc/Stepper";
 import Layout from "@/packages/components/Layout";
-import ProfileNavBar from "@/packages/components/ProfileNavBar";
 import { checkCustomerSessionStorage } from "@/utils/storage";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";

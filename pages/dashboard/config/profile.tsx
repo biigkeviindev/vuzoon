@@ -1,4 +1,3 @@
-import AssetList from "@/packages/components/AssetList";
 import ConfigProfile from "@/packages/components/ConfigProfile";
 import Layout from "@/packages/components/Layout";
 import { checkCustomerSessionStorage } from "@/utils/storage";
