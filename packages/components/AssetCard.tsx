@@ -1,7 +1,14 @@
 import { formatCurrency } from "@/utils/strings";
+import { useRouter } from "next/router";
 import React from "react";
 
 const AssetCard = ({ asset }: any) => {
+  const router = useRouter();
+
+  const goToAsset = () => {
+    router.push(`/dashboard/properties/${asset._id}`);
+  };
+
   return (
     <div className="w-full md:w-1/2 lg:w-1/3  p-2">
       <div className="m-h-[280px] shadow-md  rounded-lg bg-[#fff] text-black">
@@ -56,6 +63,14 @@ const AssetCard = ({ asset }: any) => {
               <p className="text-base">Rentabilidad anual alquiler</p>
               <span className="font-bold">{asset.rentability.yearRent}%</span>
             </div>
+          </div>
+          <div className="flex justify-center w-full pt-7">
+            <button
+              onClick={goToAsset}
+              className="w-1/2 px-4 py-2 rounded-full bg-[#e0d39c] text-black font-bold"
+            >
+              Invertir
+            </button>
           </div>
         </div>
       </div>

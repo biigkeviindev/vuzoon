@@ -1,4 +1,5 @@
 export type RealStateAsset = {
+  _id: string;
   idAsset: string;
   name: string;
   salePrice: number;
