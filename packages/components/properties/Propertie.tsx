@@ -2,6 +2,10 @@ import { RealStateAsset } from "@/types/assets";
 import { formatCurrency } from "@/utils/strings";
 import { useParams } from "next/navigation";
 import React from "react";
+import { BiEdit, BiLocationPlus } from "react-icons/bi";
+import { FcDocument } from "react-icons/fc";
+import { GiToken } from "react-icons/gi";
+import { GrDocumentPdf } from "react-icons/gr";
 import { useSelector } from "react-redux";
 
 const Propertie = () => {
@@ -10,7 +14,7 @@ const Propertie = () => {
   const assetSelected = assets.find(
     (asset: RealStateAsset) => asset._id === id
   );
-  console.log(assetSelected);
+  const gallery = [0, 1, 2];
   return (
     <div className="text-white">
       <section className="flex">
@@ -21,21 +25,13 @@ const Propertie = () => {
             className="rounded-md w-full"
           />
           <div className="flex gap-1 py-5">
-            <img
-              src="https://d23t4e7dm0xzj0.cloudfront.net/RDO-6/images/1712173864004_rdo_6_1.png"
-              alt=""
-              className="rounded-md w-1/3"
-            />
-            <img
-              src="https://d23t4e7dm0xzj0.cloudfront.net/RDO-6/images/1712173864004_rdo_6_1.png"
-              alt=""
-              className="rounded-md w-1/3"
-            />
-            <img
-              src="https://d23t4e7dm0xzj0.cloudfront.net/RDO-6/images/1712173864004_rdo_6_1.png"
-              alt=""
-              className="rounded-md w-1/3"
-            />
+            {gallery.map(() => (
+              <img
+                src="https://d23t4e7dm0xzj0.cloudfront.net/RDO-6/images/1712173864004_rdo_6_1.png"
+                alt=""
+                className="rounded-md w-1/3"
+              />
+            ))}
           </div>
         </div>
         <div className="w-1/2 px-24 py-20 bg-[#17212e] rounded-lg h-fit mt-20">
@@ -82,7 +78,33 @@ const Propertie = () => {
           </div>
         </div>
       </section>
+      <NavigationAssetBar />
+      <div className="px-14">
+        <OtherInfoBox description={assetSelected.description} />
+      </div>
     </div>
+  );
+};
+
+const OtherInfoBox = ({ description }) => {
+  return <div className="bg-[#17212e] rounded-lg p-9">{description}</div>;
+};
+const NavigationAssetBar = () => {
+  return (
+    <nav className="w-full justify-center flex gap-20 text-[20px] py-5">
+      <p className="flex items-center gap-2">
+        Descripción <BiEdit />
+      </p>
+      <p className="flex items-center gap-2">
+        Localización <BiLocationPlus />
+      </p>
+      <p className="flex items-center gap-2">
+        Datos del token <GiToken />
+      </p>
+      <p className="flex items-center gap-2">
+        Documentos <GrDocumentPdf />
+      </p>
+    </nav>
   );
 };
 

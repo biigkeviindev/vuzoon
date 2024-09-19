@@ -57,7 +57,7 @@ const SideMenu = () => {
           <div className="py-2 cursor-pointer pl-10">
             <p
               onClick={() => closeSession()}
-              className="flex items-center font-bold text-[12px]"
+              className="flex items-center font-bold text-[14px]"
             >
               <FaSignOutAlt className="mr-3" size={20} />
               Cerrar Sesión
