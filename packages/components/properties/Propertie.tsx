@@ -1,7 +1,7 @@
 import { RealStateAsset } from "@/types/assets";
 import { formatCurrency } from "@/utils/strings";
 import { useParams } from "next/navigation";
-import React from "react";
+import React, { useState } from "react";
 import { BiEdit, BiLocationPlus } from "react-icons/bi";
 import { FcDocument } from "react-icons/fc";
 import { GiToken } from "react-icons/gi";
@@ -14,9 +14,11 @@ const Propertie = () => {
   const assetSelected = assets.find(
     (asset: RealStateAsset) => asset._id === id
   );
+  const [barNumber, setBarNumber] = useState(0);
   const gallery = [0, 1, 2];
+
   return (
-    <div className="text-white">
+    <div className="text-white pb-6">
       <section className="flex">
         <div className="w-1/2 p-20">
           <img
@@ -78,7 +80,7 @@ const Propertie = () => {
           </div>
         </div>
       </section>
-      <NavigationAssetBar />
+      <NavigationAssetBar step={barNumber} handler={setBarNumber} />
       <div className="px-14">
         <OtherInfoBox description={assetSelected.description} />
       </div>
@@ -89,19 +91,39 @@ const Propertie = () => {
 const OtherInfoBox = ({ description }) => {
   return <div className="bg-[#17212e] rounded-lg p-9">{description}</div>;
 };
-const NavigationAssetBar = () => {
+const NavigationAssetBar = ({ step, handler }) => {
   return (
     <nav className="w-full justify-center flex gap-20 text-[20px] py-5">
-      <p className="flex items-center gap-2">
+      <p
+        onClick={() => handler(0)}
+        className={`cursor-pointer flex items-center gap-2 text-${
+          step === 0 ? "[#e0d39c]" : "white"
+        }`}
+      >
         Descripción <BiEdit />
       </p>
-      <p className="flex items-center gap-2">
+      <p
+        onClick={() => handler(1)}
+        className={`cursor-pointer flex items-center gap-2 text-${
+          step === 1 ? "[#e0d39c]" : "white"
+        }`}
+      >
         Localización <BiLocationPlus />
       </p>
-      <p className="flex items-center gap-2">
+      <p
+        onClick={() => handler(2)}
+        className={`cursor-pointer flex items-center gap-2 text-${
+          step === 2 ? "[#e0d39c]" : "white"
+        }`}
+      >
         Datos del token <GiToken />
       </p>
-      <p className="flex items-center gap-2">
+      <p
+        onClick={() => handler(3)}
+        className={`cursor-pointer flex items-center gap-2 text-${
+          step === 3 ? "[#e0d39c]" : "white"
+        }`}
+      >
         Documentos <GrDocumentPdf />
       </p>
     </nav>
